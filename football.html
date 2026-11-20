@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Football Zone - football news, match centre, league tables and transfer updates.">
+  <title>Football Zone | The Beautiful Game</title>
+  <style>
+    :root{--bg:#080d12;--panel:#111a22;--panel2:#17232d;--line:#263541;--text:#f4f7f8;--muted:#9aabb6;--green:#20df91;--green2:#0aa86b;--orange:#ffb454}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1160px,92%);margin:auto}
+    .topline{background:#05090d;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}.topline .wrap{display:flex;justify-content:space-between;padding:8px 0;gap:12px}
+    header{position:sticky;top:0;z-index:10;background:rgba(8,13,18,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-weight:900;font-size:22px;letter-spacing:.5px;display:flex;align-items:center;gap:9px}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--green);color:#06120c;font-size:22px}
+    .navlinks{display:flex;gap:24px;color:#c4d0d7;font-size:14px}.navlinks a:hover,.navlinks a.active{color:var(--green)}.nav-actions{display:flex;align-items:center;gap:10px}
+    .btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:9px;padding:10px 14px;cursor:pointer}.btn:hover{border-color:var(--green);color:var(--green)}.btn.primary{background:var(--green);color:#06120c;border-color:var(--green);font-weight:800}
+    .menu-btn{display:none}.hero{padding:48px 0 30px}.eyebrow{color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:1.8px;font-size:11px}.hero-grid{display:grid;grid-template-columns:1.45fr .8fr;gap:18px}
+    .hero-main{min-height:370px;border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(90deg,rgba(3,10,9,.94),rgba(3,10,9,.35)),url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1400&q=85') center/cover;display:flex;align-items:end;padding:34px}
+    .hero-main h1{font-size:clamp(30px,4.2vw,52px);line-height:1.05;margin:12px 0;max-width:700px}.hero-main p{color:#d0dadf;max-width:580px}.tag{display:inline-block;background:rgba(32,223,145,.14);border:1px solid rgba(32,223,145,.4);color:var(--green);padding:5px 9px;border-radius:5px;font-size:11px;font-weight:800;text-transform:uppercase}
+    .hero-side{display:grid;gap:18px}.side-card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:22px;display:flex;flex-direction:column;justify-content:space-between}.side-card h3{font-size:20px;line-height:1.25;margin:12px 0}.side-card p{color:var(--muted);font-size:13px;margin:0}
+    section{padding:22px 0 34px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}.section-head h2{margin:4px 0 0;font-size:25px}.muted{color:var(--muted)}.section-link{color:var(--green);font-size:13px;font-weight:700}
+    .ticker{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:12px 16px;display:flex;gap:16px;align-items:center;overflow:auto;white-space:nowrap}.ticker strong{color:var(--green);font-size:11px;letter-spacing:1px}.ticker span{font-size:13px;color:#c8d3d9}
+    .matches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.match{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:17px}.match-top{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-bottom:17px}.live{color:#ff6b6b;font-weight:800}.teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px}.team{text-align:center;font-size:13px;font-weight:700}.crest{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);border:1px solid var(--line);font-size:19px;margin:0 auto 7px}.score{font-size:25px;font-weight:900;letter-spacing:2px}.match-foot{border-top:1px solid var(--line);margin-top:15px;padding-top:12px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between}
+    .content-grid{display:grid;grid-template-columns:1.55fr .8fr;gap:20px}.news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.news-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}.news-img{height:155px;background:#1a2a32 center/cover}.news-body{padding:17px}.news-body h3{font-size:17px;line-height:1.3;margin:9px 0}.news-body p{color:var(--muted);font-size:13px;margin:0}.meta{font-size:11px;color:var(--muted);display:flex;gap:9px;align-items:center}.news-tools{display:flex;gap:8px;align-items:center;margin:0 0 15px;flex-wrap:wrap}.search{flex:1;min-width:170px;background:var(--panel);border:1px solid var(--line);color:var(--text);padding:11px 13px;border-radius:9px;outline:none}.search:focus{border-color:var(--green)}.filter{background:var(--panel2);color:var(--muted);border:1px solid var(--line);padding:9px 12px;border-radius:8px;cursor:pointer}.filter.active{background:rgba(32,223,145,.13);color:var(--green);border-color:var(--green)}
+    .sidebar-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}.sidebar-box h3{margin:0 0 14px;font-size:17px}.table{width:100%;border-collapse:collapse;font-size:12px}.table th{text-align:left;color:var(--muted);font-weight:600;padding:8px 4px}.table td{padding:9px 4px;border-top:1px solid var(--line)}.table td:last-child,.table th:last-child{text-align:right}.club{font-weight:700}.rank{color:var(--muted);width:20px;display:inline-block}.points{color:var(--green);font-weight:800}
+    .transfer{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}.transfer:first-of-type{border:0;padding-top:0}.avatar{width:38px;height:38px;flex:none;border-radius:10px;background:var(--panel2);display:grid;place-items:center}.transfer b{font-size:13px;display:block}.transfer small{color:var(--muted)}
+    .newsletter{background:linear-gradient(110deg,#0c3929,#10252c);border:1px solid #1a6349;border-radius:16px;padding:25px;display:flex;justify-content:space-between;align-items:center;gap:20px}.newsletter h2{margin:0 0 5px}.newsletter p{margin:0;color:#b8d0c6;font-size:13px}.newsletter form{display:flex;gap:8px;max-width:390px;width:100%}.newsletter input{min-width:0;flex:1;border:1px solid #32775c;background:#071b13;color:white;border-radius:8px;padding:11px}
+    footer{border-top:1px solid var(--line);margin-top:35px;padding:28px 0;color:var(--muted);font-size:12px}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.notice{font-size:11px;color:var(--muted);margin-top:12px}.empty{padding:30px;text-align:center;color:var(--muted);grid-column:1/-1}
+    @media(max-width:800px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#0b1218;padding:18px 4%;border-bottom:1px solid var(--line);flex-direction:column;gap:15px}.navlinks.open{display:flex}.menu-btn{display:block}.nav-actions .btn:not(.menu-btn){display:none}.hero-grid,.content-grid{grid-template-columns:1fr}.hero-main{min-height:330px}.hero-side{grid-template-columns:1fr 1fr}.matches{grid-template-columns:1fr 1fr}.newsletter{align-items:flex-start;flex-direction:column}}
+    @media(max-width:520px){.topline .wrap{font-size:10px}.brand{font-size:18px}.hero{padding-top:25px}.hero-main{padding:22px;min-height:330px}.hero-side,.matches,.news-grid{grid-template-columns:1fr}.section-head h2{font-size:22px}.newsletter form{flex-direction:column}.newsletter form button{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="topline"><div class="wrap"><span>THE HOME OF FOOTBALL</span><span id="today"></span></div></div>
+  <header><div class="wrap nav">
+    <a class="brand" href="#"><span class="brand-mark">⚽</span> FOOTBALL<span style="color:var(--green)">ZONE</span></a>
+    <nav class="navlinks" id="navlinks"><a class="active" href="#">Home</a><a href="#matches">Matches</a><a href="#news">News</a><a href="#table">Standings</a><a href="#transfers">Transfers</a></nav>
+    <div class="nav-actions"><button class="btn" onclick="showSaved()">♡ Saved</button><button class="btn menu-btn" onclick="toggleMenu()">☰</button></div>
+  </div></header>
+
+  <main class="wrap">
+    <div class="hero">
+      <div class="hero-grid">
+        <article class="hero-main"><div><span class="tag">Featured story</span><h1>THE BEAUTIFUL GAME.<br>ONE HOME.</h1><p>Your football destination for headlines, match updates, league tables and transfer stories from around the world.</p><a class="btn primary" href="#news">Explore the latest ↓</a></div></article>
+        <div class="hero-side">
+          <article class="side-card"><div><span class="eyebrow">Match centre</span><h3>Every match.<br>Every moment.</h3><p>Check the sample fixtures and scores below. Connect a football data API for live updates.</p></div><a class="section-link" href="#matches">GO TO MATCHES →</a></article>
+          <article class="side-card"><div><span class="eyebrow">Transfer desk</span><h3>Rumours, moves<br>& confirmed deals.</h3><p>Follow the transfer conversation across the football world.</p></div><a class="section-link" href="#transfers">LATEST TRANSFERS →</a></article>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticker"><strong>FOOTBALL BRIEFING</strong><span>Club football • International football • Transfers • Match analysis</span></div>
+
+    <section id="matches">
+      <div class="section-head"><div><span class="eyebrow">Match centre</span><h2>Featured fixtures</h2></div><span class="muted" style="font-size:12px">Demo data · not live scores</span></div>
+      <div class="matches" id="matchList"></div>
+    </section>
+
+    <section id="news">
+      <div class="section-head"><div><span class="eyebrow">The latest</span><h2>Football news</h2></div><span class="section-link">NEWS DESK</span></div>
+      <div class="news-tools"><input id="searchInput" class="search" type="search" placeholder="Search football stories..." aria-label="Search news"><button class="filter active" data-filter="All">All</button><button class="filter" data-filter="Premier League">Premier League</button><button class="filter" data-filter="Europe">Europe</button><button class="filter" data-filter="Transfers">Transfers</button></div>
+      <div class="content-grid"><div><div class="news-grid" id="newsList"></div></div>
+        <aside>
+          <div class="sidebar-box" id="table"><h3>🏆 Sample league table</h3><div class="muted" style="font-size:11px;margin-bottom:8px">Illustrative standings only</div><table class="table"><thead><tr><th>#</th><th>Club</th><th>Pts</th></tr></thead><tbody id="standings"></tbody></table></div>
+          <div class="sidebar-box" id="transfers"><h3>🔄 Transfer watch</h3><div class="transfer"><div class="avatar">⚽</div><div><b>Transfer window tracker</b><small>Follow official club announcements</small></div></div><div class="transfer"><div class="avatar">📰</div><div><b>Rumour check</b><small>Always verify reports with trusted sources</small></div></div><div class="transfer"><div class="avatar">✍️</div><div><b>Deal confirmed</b><small>Add confirmed transfer stories here</small></div></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <section><div class="newsletter"><div><h2>Get the football briefing</h2><p>A demo sign-up form for your future newsletter.</p></div><form id="subscribeForm"><input type="email" id="email" placeholder="Your email address" required><button class="btn primary" type="submit">Subscribe</button></form></div><p class="notice" id="formMessage" aria-live="polite"></p></section>
+  </main>
+
+  <footer><div class="wrap footer-row"><div><b style="color:white">⚽ FOOTBALL ZONE</b><div>Made for fans of the beautiful game.</div></div><div>Home · Matches · News · Standings · Transfers</div><div>© <span id="year"></span> Football Zone</div></div><div class="wrap notice">Demo website: news, fixtures, scores and standings are sample content. This page does not currently fetch live data or publish user subscriptions.</div></footer>
+
+  <script>
+    const matches = [
+      {league:"Premier League",date:"Sample fixture",home:"Arsenal",away:"Liverpool",h:"2",a:"1",status:"FT",emoji1:"🔴",emoji2:"🔴"},
+      {league:"La Liga",date:"Sample fixture",home:"Barcelona",away:"Real Madrid",h:"—",a:"—",status:"UPCOMING",emoji1:"🔵",emoji2:"⚪"},
+      {league:"Champions League",date:"Sample fixture",home:"PSG",away:"Bayern",h:"1",a:"1",status:"HT",emoji1:"🔵",emoji2:"🔴"}
+    ];
+    const stories = [
+      {category:"Premier League",title:"The Premier League season: storylines to follow",desc:"A look at the teams, tactics and players shaping the campaign.",date:"Editor's pick",image:"https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=900&q=80"},
+      {category:"Europe",title:"Champions League nights bring the drama",desc:"Europe's biggest club competition always delivers talking points.",date:"Competition watch",image:"https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=900&q=80"},
+      {category:"Transfers",title:"Transfer window: how to follow confirmed deals",desc:"Separate official announcements from speculation and social media rumours.",date:"Transfer desk",image:"https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=80"},
+      {category:"Europe",title:"The art of the modern football midfielder",desc:"How pressing, positioning and passing shape the centre of the pitch.",date:"Tactical view",image:"https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=900&q=80"},
+      {category:"Premier League",title:"What makes a great defensive partnership?",desc:"Communication, timing and teamwork remain key at the back.",date:"Analysis",image:"https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=900&q=80"},
+      {category:"Transfers",title:"Scouting watch: young talents to keep an eye on",desc:"A guide to evaluating emerging players without jumping to conclusions.",date:"Scouting",image:"https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=80"}
+    ];
+    const table = [["Arsenal",28],["Liverpool",26],["Man City",25],["Aston Villa",22],["Tottenham",20]];
+    const saved = new Set(JSON.parse(localStorage.getItem("fz-saved") || "[]"));
+    function renderMatches(){document.getElementById("matchList").innerHTML=matches.map(m=>`<article class="match"><div class="match-top"><span>${m.league}</span><span class="${m.status==='UPCOMING'?'':'live'}">${m.status}</span></div><div class="teams"><div class="team"><div class="crest">${m.emoji1}</div>${m.home}</div><div class="score">${m.h} : ${m.a}</div><div class="team"><div class="crest">${m.emoji2}</div>${m.away}</div></div><div class="match-foot"><span>${m.date}</span><span>Match details →</span></div></article>`).join("")}
+    function renderNews(items=stories){const root=document.getElementById("newsList");if(!items.length){root.innerHTML='<div class="empty">No stories found. Try another search.</div>';return}root.innerHTML=items.map((s)=>{const key=s.title.replace(/'/g,"&#39;");const isSaved=saved.has(s.title);return `<article class="news-card"><div class="news-img" style="background-image:url('${s.image}')"></div><div class="news-body"><div class="meta"><span class="tag">${s.category}</span><span>${s.date}</span></div><h3>${s.title}</h3><p>${s.desc}</p><div style="display:flex;justify-content:space-between;align-items:center;margin-top:15px"><span class="muted" style="font-size:11px">Football Zone</span><button class="btn" style="padding:6px 10px" onclick="toggleSave('${key}')">${isSaved?'♥ Saved':'♡ Save'}</button></div></div></article>`}).join("")}
+    function renderTable(){document.getElementById("standings").innerHTML=table.map((r,i)=>`<tr><td><span class="rank">${i+1}</span></td><td class="club">${r[0]}</td><td class="points">${r[1]}</td></tr>`).join("")}
+    function toggleSave(title){saved.has(title)?saved.delete(title):saved.add(title);localStorage.setItem("fz-saved",JSON.stringify([...saved]));filterNews()}
+    function filterNews(){const term=document.getElementById("searchInput").value.toLowerCase();const active=document.querySelector(".filter.active").dataset.filter;renderNews(stories.filter(s=>(active==="All"||s.category===active)&&(s.title+" "+s.desc+" "+s.category).toLowerCase().includes(term)))}
+    document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");filterNews()}));
+    document.getElementById("searchInput").addEventListener("input",filterNews);
+    function showSaved(){const list=stories.filter(s=>saved.has(s.title));document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));document.querySelector('[data-filter="All"]').classList.add("active");document.getElementById("searchInput").value="";renderNews(list);document.getElementById("news").scrollIntoView()}
+    function toggleMenu(){document.getElementById("navlinks").classList.toggle("open")}
+    document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("open")));
+    document.getElementById("subscribeForm").addEventListener("submit",e=>{e.preventDefault();document.getElementById("formMessage").textContent="Thanks! This is a demo form; connect an email service to collect subscriptions.";e.target.reset()});
+    document.getElementById("today").textContent=new Date().toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short",year:"numeric"});
+    document.getElementById("year").textContent=new Date().getFullYear();
+    renderMatches();renderNews();renderTable();
+  </script>
+</body>
+</html>
